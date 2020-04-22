@@ -13,7 +13,7 @@ def find_missing(numbers):
         if min == None or min > num:
             min = num
     
-    if min - 1 != pot_res[0]:
+    if min - 1 != pot_res[0] and pot_res[0] > 0:
         return pot_res[0]
     else:
         return pot_res[1]
@@ -24,5 +24,6 @@ assert (find_missing([3, 4, -1, 1]) == 2), "Error 1"
 assert (find_missing([1, 2, 0]) == 3), "Error 2"
 assert (find_missing([1, 2, 0, 3, 5]) == 4), "Error 3"
 assert (find_missing([-1, -2, 0, 3, 2]) == 1), "Error 4"
-assert (find_missing([3, -1, -2, 0, 3, 2, -1]) == 1), "Error 4"
+assert (find_missing([3, -1, -2, 0, 3, 2, -1]) == 1), "Error 5"
+assert (find_missing([3, -2, 0, 3, 2]) == 1), "Error 6"
 print("All passed")
