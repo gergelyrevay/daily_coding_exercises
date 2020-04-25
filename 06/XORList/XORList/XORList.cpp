@@ -10,10 +10,10 @@ class XORList {
 		Node(int val) : value(val), both(nullptr) {}
 	};
 
-	Node *head;
+	Node *head, *tail;
 
 public:
-	XORList() : head(nullptr) {}
+	XORList() : head(nullptr), tail(nullptr) {}
 	~XORList() {
 	//FIXME
 	}
@@ -26,18 +26,20 @@ public:
 
 		if (head == nullptr) {
 			head = node;
+			tail = head;
 		}
 		else {
-			while(next != nullptr) {
-				std::cout << next->value << "->";
+			//while(next != nullptr) {
+			//	std::cout << next->value << "->";
 
-				tmp = next;
-				next = (Node *)((int)tmp->both ^ (int)prev);
-				prev = tmp;
-			}
-			tmp->both = (Node *)((int)tmp->both ^ (int)node);
-			std::cout << node->value << "->END\n";
-			node->both = tmp;
+			//	tmp = next;
+			//	next = (Node *)((int)tmp->both ^ (int)prev);
+			//	prev = tmp;
+			//}
+			tail->both = (Node *)((int)tail->both ^ (int)node);
+			//std::cout << node->value << "->END\n";
+			node->both = tail;
+			tail = node;
 		}
 	}
 
@@ -69,5 +71,8 @@ int main()
 	xorList->add(4);
 	int test = xorList->get(2);
 	std::cout << "Node Value: " << test << "\n";
+	test = xorList->get(3);
+	std::cout << "Node Value: " << test << "\n";
+
 }
 
